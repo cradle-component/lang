@@ -10,13 +10,13 @@ It listens on a `change` event, uses the ISO-2 language code from the target val
 
 ### Example
 ```
-{% component 'alang.js' %}
 {% if site.langs.size > 1 %}
+{% component 'alang.js' %}
 <a-lang>
-    <select name="lang" class="select bg-transparent w-24" value="{{lang}}">
-        {% for l in site.langs | keys | sort %}
-        <option value="{{ l }}" {% if l == lang %}selected{% endif %}>{{languages[l] | t:'default' }}</option>
-        {% endfor %}
+    <select name="lang" class="select" value="{{lang}}">
+        {%- for code in site.langs | keys | sort %}
+        <option value="{{ code }}" {% if code == lang %}selected{% endif %}>{{languages[code] | t:'default' }}</option>
+        {%- endfor %}
     </select>
 </a-lang>
 {% endif %}
